@@ -1,0 +1,25 @@
+using UnityEngine;
+
+public class AntiCheat : MonoBehaviour{
+    private Vector3 lastPosition;
+    private float lastSpeed;
+
+    void Start(){
+        lastPosition = transform.position;
+        lastSpeed = 0f;
+        lastDistance = 0f;
+    }
+
+    void Update(){
+        float currentSpeed = (transform.position - lastPosition).magnitude / Time.deltaTime;
+        lastPosition = transform.position;
+        lastSpeed = currentSpeed;
+        lastDistance = currentDistance;
+        if (Mathf.Abs(currentSpeed - lastSpeed) > 3.00f){     
+            if (lastDistance > 10.5f){
+                 Destroy(other.gameObject);
+                 Debug.Log("안티치트가 감지되었습니다.\n고객센터로 문의해주세요!");
+            }
+        }
+    }
+}
